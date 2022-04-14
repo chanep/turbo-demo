@@ -1,0 +1,44 @@
+{
+  "name": "shared-module",
+  "version": "0.0.0",
+  "main": "dist/index",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nestjs/common": "^8.4.3",
+    "winston": "^3.7.2",
+    "winston-syslog": "^2.5.0"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^8.4.3",
+    "config": "*",
+    "rimraf": "^3.0.2",
+    "tsconfig": "*",
+    "typescript": "^4.6.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
