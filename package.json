@@ -4,21 +4,26 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "packages/nestjs/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:api": "turbo run dev --filter=my-api",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "docker:build:my-api": "docker build -f apps/my-api/Dockerfile . -t turbo-demo/my-api:latest --build-arg NODE_ENV=production",
+    "docker:run:my-api": "docker run -p 3000:3000 turbo-demo/my-api:latest"
   },
   "devDependencies": {
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "^1.2.2"
   },
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.3.1"
+  "packageManager": "yarn@1.22.17"
 }
